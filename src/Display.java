@@ -69,13 +69,7 @@ public class Display extends JComponent implements MouseListener, MouseMotionLis
 		setSize(DISPLAY_WIDTH, DISPLAY_HEIGHT);
 
 		JLabel numLabel = new JLabel("SUDOKU");
-		//		 Rectangle r = new Rectangle(10, 10, 200, 200);
-		//		 numLabel.setBounds(r);
-		//		 add(numLabel, BorderLayout.CENTER);
-		//		 numLabel.setVisible(true);
-
-		//		changed emptyLabel to a class variable :D
-		//		JLabel emptyLabel = new JLabel("");
+		
 		for (int row = 0; row < ROWS; row++) {
 			for (int col = 0; col < COLS; col++) {
 				int rx = X_GRID_OFFSET + col * BOX_WIDTH;
@@ -95,8 +89,6 @@ public class Display extends JComponent implements MouseListener, MouseMotionLis
 		frame.addMouseMotionListener(this);
 		frame.addKeyListener(this);
 		frame.setFocusable(true);
-
-		// Example of setting up a button.
 
 		generateBoard = new GenerateBoardButton();
 		generateBoard.setBounds(75, 535, 125, 36);
@@ -171,7 +163,7 @@ public class Display extends JComponent implements MouseListener, MouseMotionLis
 		paintloop = value;
 	}
 
-	private void drawGrid(Graphics g) { //it used to just be void - I added a private - OK?
+	private void drawGrid(Graphics g) {
 		Graphics2D thinLine = (Graphics2D) g;
 		thinLine.setStroke(new BasicStroke(THIN_LINE));
 		for (int row = 0; row <= ROWS; row++) { // draws horizontal lines
@@ -371,56 +363,6 @@ public class Display extends JComponent implements MouseListener, MouseMotionLis
 
 	}
 
-	//	public void putNumber(int value, int x, int y) {
-	//		frame.getContentPane().remove(boxLabels[x][y]);
-	//		String stringVal = String.valueOf(value);
-	//		JLabel numLabel = new JLabel(stringVal);
-	//		int rx = X_GRID_OFFSET + x * BOX_WIDTH;
-	//		int ry = Y_GRID_OFFSET + y * BOX_HEIGHT;
-	//		Rectangle rect = new Rectangle(rx + 1, ry + 1, BOX_WIDTH - 3,
-	//				BOX_HEIGHT - 3);
-	//		numLabel.setBounds(rect);
-	//		numLabel.setVerticalAlignment(JLabel.CENTER);
-	//		numLabel.setHorizontalAlignment(JLabel.CENTER);
-	//		//		frame.getContentPane().remove(boxLabels[x][y]);
-	//		frame.getContentPane().add(numLabel);
-	//		//numLabel.setVisible(true);
-	//		//numLabel.setOpaque(true);
-	//		//numLabel.setForeground(Color.BLACK);
-	//
-	//		boxLabels[x][y] = numLabel;
-	//		boxValues[x][y] = value;	
-	//	}
-
-	// swapped
-	//		public void putBoard(int[][] board, String color) {
-	//			for (int i = 0; i < board.length; i++) {
-	//				for (int j = 0; j < board[0].length; j++) {
-	//					if (board[i][j] != 0) {
-	//						String stringVal = String.valueOf(board[i][j]);
-	//						JLabel numLabel = new JLabel(stringVal);
-	//						int rx = X_GRID_OFFSET + i * BOX_WIDTH;
-	//						int ry = Y_GRID_OFFSET + j * BOX_HEIGHT;
-	//						Rectangle rect = new Rectangle(rx + 1, ry + 1,
-	//								BOX_WIDTH - 3, BOX_HEIGHT - 3);
-	//						numLabel.setBounds(rect);
-	//						numLabel.setVerticalAlignment(JLabel.CENTER);
-	//						numLabel.setHorizontalAlignment(JLabel.CENTER);
-	//						if (color.equals("blue")) {
-	//							numLabel.setForeground(Color.BLUE);
-	//						} else if (color.equals("black")) {
-	//							numLabel.setForeground(Color.BLACK);
-	//						}
-	//	
-	//						frame.getContentPane().add(numLabel);
-	//						boxLabels[i][j] = numLabel;
-	//						boxValues = board;
-	//					}
-	//				}
-	//	
-	//			}
-	//		}
-
 	public void putBoard(int[][] board, String color) {
 		for (int i = 0; i < board.length; i++) {
 			for (int j = 0; j < board[0].length; j++) {
@@ -517,7 +459,6 @@ public class Display extends JComponent implements MouseListener, MouseMotionLis
 			System.out.println("inputNum: " + inputNum);
 			System.out.println("Just typed in box " + x + " by " + y);
 
-			// put this in a method!! (putNumber)
 			String label = String.valueOf(inputNum);
 			JLabel numLabel = new JLabel(label);
 			int rx = X_GRID_OFFSET + x * BOX_WIDTH;
